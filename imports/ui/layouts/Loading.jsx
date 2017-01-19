@@ -1,6 +1,6 @@
 import React from 'react';
 import { setDefaultLoadingComponent } from 'react-komposer';
-import './sass/loading.sass';
+// import './sass/Loading.sass';
 
 const Loading = () => (
 	<div className="spinner">

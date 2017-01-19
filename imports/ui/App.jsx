@@ -1,39 +1,32 @@
+import { Meteor } from 'meteor/meteor';
 import React , {Component} from 'react';
-import { Router, Route, browserHistory } from 'react-router'
-import Loading from './layouts/Loading.jsx';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
+import Loading from './layouts/Loading.jsx';
 import Main from './layouts/Main.jsx';
 import Home from './components/Home.jsx';
 
+import AdminHome from './admin/components/AdminHome.jsx';
 
+// =================
+// Routes Definition
+// =================
 const Routes = (
-	<Router history={browserHistory}>
+	<Route>
 		<Route component={Main}>
 			<Route path='/' component={Home} />
 		</Route>
-	</Router>
+		<Route path='/admin'>
+			<IndexRoute component={AdminHome} />
+		</Route>
+	</Route>
 );
 
 class App extends Component {
-
-	componentDidMount() {
-		phonon.options({
-			navigator: {
-					defaultPage: 'home',
-					animatePages: true,
-					enableBrowserBackButton: true,
-					templateRootDirectory: './tpl'
-			},
-			i18n: null // for this example, we do not use internationalization
-		});
-		var app = phonon.navigator();
-		app.on({page: 'home', preventClose: false, content: null});
-		app.start();
-	}
-
 	render() {
-		return Routes;
+		return (<Router history={browserHistory} routes={Routes} />);
 	}
 }
 
 export default App;
+export { Routes };

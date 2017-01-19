@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
+import { Makes } from '../imports/api/makes.js';
 
-Meteor.startup(() => {
-  // code to run on server at startup
-});
+Meteor.publish('makes', () => ( Makes.find({}) ));
